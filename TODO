@@ -1,9 +1,9 @@
 Requisitos funcionais:
 
-    Informar o que foi gasto
-    Valor gasto
-    Conta para depósito
-    Adicionar nota fiscal
+x   Informar o que foi gasto
+x   Valor gasto
+x   Conta para depósito
+x   Adicionar nota fiscal
     Comentários
 x   Dados pessoais
     Listagem de reembolsos (considerar status, aberto, fechado, em processo)
@@ -21,6 +21,8 @@ x   Criar camada de serviço para persistir dados (mock)
 
 Outros
 
-    Mensagens para os usuários (Toast), com StyledComponents
-    Página de Login
-    Tentar persistir através do localStorage
+x   Mensagens para os usuários (Toast com StyledComponents)
+x   Página de Login
+    Persistir através do localStorage
+    Validar campos
+x   Exigir Login

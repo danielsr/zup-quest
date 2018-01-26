@@ -1,4 +1,14 @@
 {
+  "banks": [
+    {
+      "id": 341,
+      "name": "Itau"
+    },
+    {
+      "id": 33,
+      "name": "Santander"
+    }
+  ],
   "users": [
     {
       "id": 1,
@@ -7,28 +17,28 @@
       "pwd": "1234"
     },
     {
-      "name": "dsfdsf",
-      "email": "sdfdsf",
-      "pwd": "sdfdsf",
+      "name": "daniel",
+      "email": "daniel.rodrigues@zup.com.br",
+      "pwd": "1233",
       "id": 2
-    },
+    }
+  ],
+  "refunds": [
     {
-      "name": "sasd",
-      "email": "sadasd",
-      "pwd": "asdasd",
-      "id": 3
-    },
-    {
-      "name": "sads",
-      "email": "asdasd",
-      "pwd": "asdas",
-      "id": 4
-    },
-    {
-      "name": "dsfds",
-      "email": "sdf",
-      "pwd": "sdfds",
-      "id": 5
+      "id": 1,
+      "userId": 1,
+      "totalValue": 100,
+      "bankId": 341,
+      "agency": "8833",
+      "account": "06720-3",
+      "items": [
+        {
+          "id": 1,
+          "desc": "item 1",
+          "nf": "1234",
+          "value": 100
+        }
+      ]
     }
   ]
 }

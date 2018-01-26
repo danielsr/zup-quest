@@ -16,6 +16,8 @@ const getUser = function(state = {}, action) {
   switch (action.type) {
     case types.SAVED_USER:
       return action.res;
+    case types.LOGGEDIN:
+      return action.res;
     default:
       return state;
   }
