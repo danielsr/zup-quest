@@ -1,0 +1,34 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Daniel Rodrigues",
+      "email": "danielsr@gmail.com",
+      "pwd": "1234"
+    },
+    {
+      "name": "dsfdsf",
+      "email": "sdfdsf",
+      "pwd": "sdfdsf",
+      "id": 2
+    },
+    {
+      "name": "sasd",
+      "email": "sadasd",
+      "pwd": "asdasd",
+      "id": 3
+    },
+    {
+      "name": "sads",
+      "email": "asdasd",
+      "pwd": "asdas",
+      "id": 4
+    },
+    {
+      "name": "dsfds",
+      "email": "sdf",
+      "pwd": "sdfds",
+      "id": 5
+    }
+  ]
+}
