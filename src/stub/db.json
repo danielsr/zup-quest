@@ -21,6 +21,12 @@
       "email": "daniel.rodrigues@zup.com.br",
       "pwd": "1233",
       "id": 2
+    },
+    {
+      "name": "Daniel dos Santos Rodrigues",
+      "email": "danielsr@gmail.com",
+      "pwd": "1234",
+      "id": 3
     }
   ],
   "refunds": [
@@ -28,7 +34,7 @@
       "id": 1,
       "userId": 1,
       "totalValue": 100,
-      "bankId": 341,
+      "bankId": "33",
       "agency": "8833",
       "account": "06720-3",
       "items": [
@@ -36,9 +42,61 @@
           "id": 1,
           "desc": "item 1",
           "nf": "1234",
-          "value": 100
+          "value": "100"
+        },
+        {
+          "desc": "adsad",
+          "nf": "ada",
+          "value": "111"
+        },
+        {
+          "desc": "asdsad",
+          "nf": "asdad",
+          "value": "50"
         }
-      ]
+      ],
+      "userName": "Daniel",
+      "userEmail": "danielsr@gmail.com"
+    },
+    {
+      "userName": "Daniel",
+      "userEmail": "danielsr@gmail.com",
+      "totalValue": "120",
+      "bankId": "33",
+      "agency": "8833",
+      "account": "06720",
+      "items": [
+        {
+          "desc": "gasolina",
+          "nf": "123",
+          "value": "120"
+        },
+        {
+          "desc": "hotel",
+          "nf": "145",
+          "value": "180"
+        },
+        {
+          "desc": "taxi",
+          "value": "45"
+        }
+      ],
+      "userId": 1,
+      "id": 2
+    },
+    {
+      "bankId": "33",
+      "agency": "123",
+      "account": "1234-5",
+      "items": [
+        {
+          "desc": "gasolina",
+          "nf": "12",
+          "value": "150"
+        }
+      ],
+      "userId": 1,
+      "id": 3
     }
   ]
 }

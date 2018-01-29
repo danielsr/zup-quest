@@ -1,28 +1,9 @@
-Requisitos funcionais:
-
-x   Informar o que foi gasto
-x   Valor gasto
-x   Conta para depósito
-x   Adicionar nota fiscal
-    Comentários
-x   Dados pessoais
+    
+    Formatação de números
+    Persistir através do localStorage
+    Validar campos
+    Comentários na Solicitação
     Listagem de reembolsos (considerar status, aberto, fechado, em processo)
     Backoffice (sistema para aprovação/negação do reembolso)
     Controle de permissões para acessar módulos (admin/client)
-
-Requisitos não funcionais:
-
-x   Criar componentes isolados.
-x   Adicione um tema nos seus componentes.
-x   Criar rotas para cada módulo
-x   Criar camada de serviço para persistir dados (mock)
-    Criar interação entre componentes (disparo de eventos).
     Criar testes unitários.
-
-Outros
-
-x   Mensagens para os usuários (Toast com StyledComponents)
-x   Página de Login
-    Persistir através do localStorage
-    Validar campos
-x   Exigir Login

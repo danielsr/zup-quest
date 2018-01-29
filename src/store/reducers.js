@@ -23,9 +23,31 @@ const getUser = function(state = {}, action) {
   }
 };
 
+const getBanks = function(state = [], action) {
+  switch (action.type) {
+    case types.FETCHED_BANKS:
+      return action.res;
+    default:
+      return state;
+  }
+};
+
+const getRefund = function(state = {}, action) {
+  switch (action.type) {
+    case types.SAVED_REFUND:
+      return action.res;
+    case types.FETCHED_REFUND:
+      return action.res;
+    default:
+      return state;
+  }
+};
+
 export default combineReducers({
   msg: getMsg,
   form: formReducer,
   user: getUser,
-  router: routerReducer
+  router: routerReducer,
+  banks: getBanks,
+  refund: getRefund
 });

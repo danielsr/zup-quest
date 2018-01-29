@@ -2,7 +2,7 @@ import axios from "axios";
 
 const baseURL = "http://localhost:5000/";
 
-class Users {
+export class Users {
   static save(values) {
     return axios.post(baseURL + "users", values);
   }
@@ -18,4 +18,22 @@ class Users {
   }
 }
 
-export default Users;
+export class Banks {
+  static getAll() {
+    return axios.get(baseURL + "banks");
+  }
+}
+
+export class Refunds {
+  static save(values) {
+    if (values.id) {
+      return axios.patch(baseURL + "refunds/" + values.id, values);
+    } else {
+      return axios.post(baseURL + "refunds", values);
+    }
+  }
+
+  static get(id) {
+    return axios.get(baseURL + "refunds/" + id);
+  }
+}

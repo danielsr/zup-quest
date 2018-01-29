@@ -1,44 +1,116 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import { reduxForm } from "redux-form";
+import { reduxForm, FieldArray } from "redux-form";
 import { connect } from "react-redux";
 import { actions } from "../store/actions";
-import { Page, Field, Button, Grid } from "../components";
+import { Page, Field, Button } from "../components";
 
 class Refund extends Component {
+  componentDidMount() {
+    this.props.fetchBanks();
+
+    if (this.props.match.params.id) {
+      this.props.fetchRefund(this.props.match.params.id);
+    }
+  }
+
   finalize = this.props.handleSubmit(values => {
-    console.log(values);
+    values = Object.assign(values, { userId: 1 });
+    this.props.saveRefund(values);
   });
 
-  fields = [
-    { name: "desc", label: "Descrição" },
-    { name: "nf", label: "Nota Fiscal" },
-    { name: "value", label: "Valor (R$)" }
-  ];
+  mapBanks = () => {
+    return this.props.banks.map(bank => {
+      return { value: bank.id, name: bank.name };
+    });
+  };
 
-  options = [{ value: 1, name: "Itau" }];
+  total = () => {
+    let sum = 0;
+    if (this.props.formValues && this.props.formValues.items) {
+      this.props.formValues.items.forEach(item => {
+        if (!isNaN(item.value)) {
+          sum += parseFloat(item.value);
+        }
+      });
+    }
+
+    return sum;
+  };
+
+  renderItems = ({ fields }) => (
+    <div>
+      <div className="field">
+        <Button
+          text="Adicionar Gasto"
+          onClick={() => {
+            fields.push({});
+          }}
+        />
+      </div>
+      <table className="table is-narrow is-fullwidth">
+        <thead>
+          <tr>
+            <th>Descrição</th>
+            <th>Nota Fiscal</th>
+            <th>Valor (R$)</th>
+            <th>Excluir</th>
+          </tr>
+        </thead>
+        <tbody>
+          {fields.map((field, index) => (
+            <tr key={index}>
+              <td>
+                <Field name={`${field}.desc`} />
+              </td>
+              <td>
+                <Field name={`${field}.nf`} />
+              </td>
+              <td>
+                <Field name={`${field}.value`} />
+              </td>
+              <td>
+                <Button
+                  className="fa fa-remove"
+                  onClick={() => {
+                    fields.remove(index);
+                  }}
+                />
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
 
   render() {
     return (
       <Page title="Solicitação de Reembolso">
         <div className="columns">
           <div className="column">
-            <Field name="userName" label="Nome" />
+            <Field name="userName" label="Nome" stateless readOnly />
           </div>
           <div className="column">
-            <Field name="userEmail" label="E-mail" />
+            <Field name="userEmail" label="E-mail" stateless readOnly />
           </div>
         </div>
         <div className="columns">
           <div className="column">
-            <Field name="totalValue" label="Valor Total (R$)" />
+            <Field
+              name="totalValue"
+              label="Valor Total (R$)"
+              stateless
+              readOnly
+              value={this.total()}
+              number
+            />
           </div>
           <div className="column">
             <Field
-              name="bank"
+              name="bankId"
               label="Banco"
               type="select"
-              options={this.options}
+              options={this.mapBanks()}
             />
           </div>
           <div className="column">
@@ -48,18 +120,7 @@ class Refund extends Component {
             <Field name="account" label="Conta Corrente" />
           </div>
         </div>
-        <div className="field">
-          <Link className="button" to="/refund/new">
-            Adicionar Gasto
-          </Link>
-        </div>
-        <Grid
-          fields={this.fields}
-          items={this.props.items}
-          keyField="nf"
-          editRoute="/refund/edit/"
-          deleteRoute="/refund/delete/"
-        />
+        <FieldArray name="items" component={this.renderItems} />
         <div className="field is-grouped">
           <div className="control">
             <Button
@@ -85,13 +146,9 @@ Refund = reduxForm({
 function mapStateToProps(state) {
   return {
     user: state.user,
-    initialValues: {
-      userName: state.user.name,
-      userEmail: state.user.email
-    },
-    items: state.form
-      ? state.form.refund ? state.form.refund.values.items : null
-      : null
+    initialValues: state.refund,
+    formValues: state.form.refund ? state.form.refund.values : null,
+    banks: state.banks
   };
 }
 
