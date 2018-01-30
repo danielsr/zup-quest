@@ -1,7 +1,14 @@
 import React, { Component } from "react";
+import VMasker from "vanilla-masker";
 import { Field as ReduxFormField } from "redux-form";
 
 class Field extends Component {
+  componentDidMount() {
+    if (this.props.number) {
+      VMasker(document.getElementById(this.props.name)).maskMoney();
+    }
+  }
+
   component = ({ input }) => {
     return (
       <div className="field">
@@ -28,17 +35,12 @@ class Field extends Component {
     } else {
       return (
         <input
+          id={this.props.name}
           className="input"
           type={this.props.type}
           {...input}
           readOnly={this.props.readOnly}
-          value={
-            this.props.number
-              ? input.value.toLocaleString(navigator.language, {
-                  minimumFractionDigits: 2
-                })
-              : input.value
-          }
+          value={input.value}
         />
       );
     }

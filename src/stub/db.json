@@ -26,17 +26,17 @@
   "refunds": [
     {
       "id": 1,
-      "userId": "1",
+      "userId": 1,
       "bankId": "33",
       "agency": "8833",
       "account": "06720-3",
       "status": "1 - ABERTA",
-      "data": "30/01/2018",
+      "data": "Tue Jan 30 2018 17:41:15 GMT-0200",
       "items": [
         {
           "desc": "gasolina",
           "nf": "1234",
-          "value": "100"
+          "value": "1.000,00"
         }
       ]
     },
@@ -49,11 +49,17 @@
         {
           "desc": "GASOLINA",
           "nf": "123",
-          "value": "150"
+          "value": "200,00"
+        },
+        {
+          "desc": "HOTEL",
+          "nf": "1234",
+          "value": "360,00"
         }
       ],
       "userId": 1,
-      "id": 2
+      "id": 2,
+      "data": "Tue Jan 30 2018 17:34:59 GMT-0200"
     },
     {
       "status": "1 - ABERTA",
@@ -69,6 +75,22 @@
       ],
       "userId": 2,
       "id": 3
+    },
+    {
+      "status": "1 - ABERTA",
+      "items": [
+        {
+          "desc": "UBER",
+          "nf": "12",
+          "value": "22,50"
+        }
+      ],
+      "agency": "1234",
+      "account": "12345",
+      "userId": 1,
+      "data": "Tue Jan 30 2018 17:41:04 GMT-0200",
+      "id": 4,
+      "bankId": "341"
     }
   ]
 }

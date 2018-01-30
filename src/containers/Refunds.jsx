@@ -1,22 +1,32 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import moment from "moment";
 import { Page } from "../components";
 import { actions } from "../store/actions";
+import { Refunds as RefundsProvider } from "../providers/api";
 
 class Refunds extends Component {
   componentDidMount() {
     this.props.fetchUserRefunds();
   }
 
+  formatDate = strDate => {
+    if (!strDate) return "";
+    var date = new Date(strDate);
+    return moment(date).format("DD/MM/YYYY HH:mm");
+  };
+
   renderRefunds = () => {
     return this.props.refunds.map(refund => {
       return (
         <tr key={refund.id}>
           <td>{refund.id}</td>
-          <td>{refund.data}</td>
+          <td>{this.formatDate(refund.data)}</td>
           <td>{refund.status}</td>
-          <td>
+          <td className="has-text-right">{RefundsProvider.getTotal(refund)}</td>
+
+          <td className="has-text-centered">
             <Link to={"/refund/" + refund.id} className="button">
               Editar
             </Link>{" "}
@@ -40,7 +50,8 @@ class Refunds extends Component {
               <th>Número</th>
               <th>Data da Solicitação</th>
               <th>Status</th>
-              <th>Editar</th>
+              <th className="has-text-right">Valor (R$)</th>
+              <th className="has-text-centered">Editar</th>
             </tr>
           </thead>
           <tbody>{this.renderRefunds()}</tbody>

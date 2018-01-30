@@ -4,6 +4,7 @@ import { reduxForm, FieldArray } from "redux-form";
 import { connect } from "react-redux";
 import { actions } from "../store/actions";
 import { Page, Field, Button } from "../components";
+import { Refunds as RefundsProvider } from "../providers/api";
 
 class Refund extends Component {
   componentDidMount() {
@@ -17,7 +18,10 @@ class Refund extends Component {
   }
 
   finalize = this.props.handleSubmit(values => {
-    values = Object.assign(values, { userId: this.props.user.id });
+    values = Object.assign(values, {
+      userId: this.props.user.id,
+      data: Date()
+    });
     this.props.saveRefund(values);
   });
 
@@ -25,19 +29,6 @@ class Refund extends Component {
     return this.props.banks.map(bank => {
       return { value: bank.id, name: bank.name };
     });
-  };
-
-  total = () => {
-    let sum = 0;
-    if (this.props.formValues && this.props.formValues.items) {
-      this.props.formValues.items.forEach(item => {
-        if (!isNaN(item.value)) {
-          sum += parseFloat(item.value);
-        }
-      });
-    }
-
-    return sum;
   };
 
   renderItems = ({ fields }) => (
@@ -69,7 +60,7 @@ class Refund extends Component {
                 <Field name={`${field}.nf`} />
               </td>
               <td>
-                <Field name={`${field}.value`} />
+                <Field name={`${field}.value`} number />
               </td>
               <td>
                 <Button
@@ -119,7 +110,7 @@ class Refund extends Component {
               label="Valor Total (R$)"
               stateless
               readOnly
-              value={this.total()}
+              value={RefundsProvider.getTotal(this.props.formValues)}
               number
             />
           </div>

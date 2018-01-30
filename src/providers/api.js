@@ -44,4 +44,18 @@ export class Refunds {
   static getByUser(userId) {
     return axios.get(baseURL + "users/" + userId + "/refunds");
   }
+
+  static getTotal(refund) {
+    var sum = 0;
+    if (refund && refund.items) {
+      refund.items.forEach(item => {
+        if (item.value) {
+          var value = item.value.replace(".", "");
+          value = value.replace(",", ".");
+          sum += parseFloat(value);
+        }
+      });
+    }
+    return sum.toLocaleString(navigator.language, { minimumFractionDigits: 2 });
+  }
 }
