@@ -14,7 +14,11 @@ export class Users {
   }
 
   static setLocal(user) {
-    localStorage.setItem("user", user);
+    localStorage.setItem("user", JSON.stringify(user));
+  }
+
+  static remLocal() {
+    localStorage.removeItem("user");
   }
 }
 
@@ -35,5 +39,9 @@ export class Refunds {
 
   static get(id) {
     return axios.get(baseURL + "refunds/" + id);
+  }
+
+  static getByUser(userId) {
+    return axios.get(baseURL + "users/" + userId + "/refunds");
   }
 }

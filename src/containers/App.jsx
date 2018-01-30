@@ -7,7 +7,7 @@ import { Header, Footer, Toast } from "../components";
 import Refund from "./Refund";
 import Login from "./Login";
 import Register from "./Register";
-//import RefundItem from "./RefundItem";
+import Refunds from "./Refunds";
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
@@ -32,7 +32,8 @@ class App extends Component {
             <Header />
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />
-            <PrivateRoute exact path="/" component={Refund} />
+            <PrivateRoute exact path="/" component={Refunds} />
+            <PrivateRoute exact path="/refunds" component={Refunds} />
             <PrivateRoute exact path="/refund" component={Refund} />
             <PrivateRoute path="/refund/:id" component={Refund} />
             <Footer />

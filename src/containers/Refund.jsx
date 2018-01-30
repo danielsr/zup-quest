@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import { reduxForm, FieldArray } from "redux-form";
 import { connect } from "react-redux";
 import { actions } from "../store/actions";
@@ -10,11 +11,13 @@ class Refund extends Component {
 
     if (this.props.match.params.id) {
       this.props.fetchRefund(this.props.match.params.id);
+    } else {
+      this.props.resetRefund();
     }
   }
 
   finalize = this.props.handleSubmit(values => {
-    values = Object.assign(values, { userId: 1 });
+    values = Object.assign(values, { userId: this.props.user.id });
     this.props.saveRefund(values);
   });
 
@@ -88,13 +91,28 @@ class Refund extends Component {
       <Page title="Solicitação de Reembolso">
         <div className="columns">
           <div className="column">
-            <Field name="userName" label="Nome" stateless readOnly />
+            <Field
+              name="userName"
+              label="Nome"
+              stateless
+              readOnly
+              value={this.props.user.name}
+            />
           </div>
           <div className="column">
-            <Field name="userEmail" label="E-mail" stateless readOnly />
+            <Field
+              name="userEmail"
+              label="E-mail"
+              stateless
+              readOnly
+              value={this.props.user.email}
+            />
           </div>
         </div>
         <div className="columns">
+          <div className="column is-one-third">
+            <Field name="status" label="Status" readOnly />
+          </div>
           <div className="column">
             <Field
               name="totalValue"
@@ -130,7 +148,9 @@ class Refund extends Component {
             />
           </div>
           <div className="control">
-            <Button text="Cancelar Solicitação" />
+            <Link to="/refunds" className="button">
+              Cancelar Alterações
+            </Link>
           </div>
         </div>
       </Page>

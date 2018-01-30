@@ -19,15 +19,19 @@ class Field extends Component {
     if (this.props.type === "select") {
       return (
         <div className="select is-fullwidth">
-          <select {...input}>{this.options()}</select>
+          <select {...input} readOnly={this.props.readOnly}>
+            <option value="">SELECIONE</option>
+            {this.options()}
+          </select>
         </div>
       );
     } else {
       return (
         <input
           className="input"
-          type="text"
+          type={this.props.type}
           {...input}
+          readOnly={this.props.readOnly}
           value={
             this.props.number
               ? input.value.toLocaleString(navigator.language, {
@@ -56,18 +60,13 @@ class Field extends Component {
       const field = {
         input: {
           name: this.props.name,
-          value: this.props.value,
-          readOnly: this.props.readOnly
+          value: this.props.value
         }
       };
       return this.component(field);
     } else {
       return (
-        <ReduxFormField
-          name={this.props.name}
-          component={this.component}
-          readOnly={this.props.readOnly}
-        />
+        <ReduxFormField name={this.props.name} component={this.component} />
       );
     }
   }

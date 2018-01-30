@@ -35,10 +35,6 @@ Login = reduxForm({
   form: "login"
 })(Login);
 
-function mapStateToProps(state) {
-  return { user: state.user };
-}
-
-Login = connect(mapStateToProps, actions)(Login);
+Login = connect(null, actions)(Login);
 
 export default Login;
