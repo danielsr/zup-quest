@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import { Page } from "../components";
 import { actions } from "../store/actions";
 import { Refunds as RefundsProvider } from "../providers/api";
 import { formatDate } from "../util/date";
 
-class Refunds extends Component {
+class Approval extends Component {
   componentDidMount() {
     this.props.fetchUserRefunds();
   }
@@ -16,13 +16,14 @@ class Refunds extends Component {
       return (
         <tr key={refund.id}>
           <td>{refund.id}</td>
+          <td>{refund.user.name}</td>
           <td>{formatDate(refund.data)}</td>
           <td>{refund.status}</td>
           <td className="has-text-right">{RefundsProvider.getTotal(refund)}</td>
 
           <td className="has-text-centered">
-            <Link to={"/refund/" + refund.id} className="icon">
-              <i class="fa fa-edit" />
+            <Link to={"/approval/" + refund.id} className="icon">
+              <i class="fa fa-check-square" />
             </Link>{" "}
           </td>
         </tr>
@@ -32,20 +33,16 @@ class Refunds extends Component {
 
   render() {
     return (
-      <Page title="Solicitações de Reembolso">
-        <div className="field">
-          <Link to="/refund" className="button is-primary">
-            Nova Solicitação
-          </Link>
-        </div>
+      <Page title="Aprovação de Solicitações">
         <table className="table is-narrow is-fullwidth">
           <thead>
             <tr>
               <th>Número</th>
+              <th>Funcionário</th>
               <th>Data da Solicitação</th>
               <th>Status</th>
               <th className="has-text-right">Valor (R$)</th>
-              <th className="has-text-centered">Editar</th>
+              <th className="has-text-centered">Ver / Aprovar</th>
             </tr>
           </thead>
           <tbody>{this.renderRefunds()}</tbody>
@@ -55,13 +52,12 @@ class Refunds extends Component {
   }
 }
 
-function mapStateToProps({ user, refunds }) {
+function mapStateToProps({ refunds }) {
   return {
-    user,
     refunds
   };
 }
 
-Refunds = connect(mapStateToProps, actions)(Refunds);
+Approval = connect(mapStateToProps, actions)(Approval);
 
-export default Refunds;
+export default Approval;

@@ -21,6 +21,9 @@
       "email": "teste@teste.com.br",
       "pwd": "1234",
       "id": 2
+    },
+    {
+      "id": 3
     }
   ],
   "refunds": [
@@ -31,14 +34,20 @@
       "agency": "8833",
       "account": "06720-3",
       "status": "1 - ABERTA",
-      "data": "Tue Jan 30 2018 17:41:15 GMT-0200",
+      "data": "Wed Jan 31 2018 11:02:39 GMT-0200",
       "items": [
         {
           "desc": "gasolina",
           "nf": "1234",
-          "value": "1.000,00"
+          "value": "1.500,00"
         }
-      ]
+      ],
+      "user": {
+        "id": 1,
+        "name": "Daniel Rodrigues",
+        "email": "danielsr@gmail.com",
+        "pwd": "1234"
+      }
     },
     {
       "status": "1 - ABERTA",
@@ -59,7 +68,13 @@
       ],
       "userId": 1,
       "id": 2,
-      "data": "Tue Jan 30 2018 17:34:59 GMT-0200"
+      "data": "Wed Jan 31 2018 11:02:41 GMT-0200",
+      "user": {
+        "id": 1,
+        "name": "Daniel Rodrigues",
+        "email": "danielsr@gmail.com",
+        "pwd": "1234"
+      }
     },
     {
       "status": "1 - ABERTA",
@@ -82,15 +97,43 @@
         {
           "desc": "UBER",
           "nf": "12",
-          "value": "22,50"
+          "value": "48,00"
         }
       ],
       "agency": "1234",
       "account": "12345",
       "userId": 1,
-      "data": "Tue Jan 30 2018 17:41:04 GMT-0200",
+      "data": "Wed Jan 31 2018 11:02:43 GMT-0200",
       "id": 4,
-      "bankId": "341"
+      "bankId": "341",
+      "user": {
+        "id": 1,
+        "name": "Daniel Rodrigues",
+        "email": "danielsr@gmail.com",
+        "pwd": "1234"
+      }
+    },
+    {
+      "status": "1 - ABERTA",
+      "bankId": "341",
+      "agency": "8833",
+      "account": "06720-3",
+      "items": [
+        {
+          "desc": "GASOLINA",
+          "nf": "123",
+          "value": "100,00"
+        }
+      ],
+      "userId": 1,
+      "data": "Wed Jan 31 2018 11:02:45 GMT-0200",
+      "id": 5,
+      "user": {
+        "id": 1,
+        "name": "Daniel Rodrigues",
+        "email": "danielsr@gmail.com",
+        "pwd": "1234"
+      }
     }
   ]
 }

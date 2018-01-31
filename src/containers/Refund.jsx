@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { actions } from "../store/actions";
 import { Page, Field, Button } from "../components";
 import { Refunds as RefundsProvider } from "../providers/api";
+import { required } from "../util/formValid";
 
 class Refund extends Component {
   componentDidMount() {
@@ -20,6 +21,7 @@ class Refund extends Component {
   finalize = this.props.handleSubmit(values => {
     values = Object.assign(values, {
       userId: this.props.user.id,
+      user: this.props.user,
       data: Date()
     });
     this.props.saveRefund(values);
@@ -47,28 +49,30 @@ class Refund extends Component {
             <th>Descrição</th>
             <th>Nota Fiscal</th>
             <th>Valor (R$)</th>
-            <th>Excluir</th>
+            <th className="has-text-centered">Excluir</th>
           </tr>
         </thead>
         <tbody>
           {fields.map((field, index) => (
             <tr key={index}>
               <td>
-                <Field name={`${field}.desc`} />
+                <Field name={`${field}.desc`} validate={[required]} />
               </td>
               <td>
-                <Field name={`${field}.nf`} />
+                <Field name={`${field}.nf`} validate={[required]} />
               </td>
               <td>
-                <Field name={`${field}.value`} number />
+                <Field name={`${field}.value`} number validate={[required]} />
               </td>
-              <td>
-                <Button
-                  className="fa fa-remove"
+              <td className="has-text-centered">
+                <a
+                  className="icon"
                   onClick={() => {
                     fields.remove(index);
                   }}
-                />
+                >
+                  <i class="fa fa-remove" />
+                </a>
               </td>
             </tr>
           ))}
@@ -120,13 +124,18 @@ class Refund extends Component {
               label="Banco"
               type="select"
               options={this.mapBanks()}
+              validate={[required]}
             />
           </div>
           <div className="column">
-            <Field name="agency" label="Agencia" />
+            <Field name="agency" label="Agencia" validate={[required]} />
           </div>
           <div className="column">
-            <Field name="account" label="Conta Corrente" />
+            <Field
+              name="account"
+              label="Conta Corrente"
+              validate={[required]}
+            />
           </div>
         </div>
         <FieldArray name="items" component={this.renderItems} />

@@ -11,7 +11,7 @@ class Footer extends Component {
         <div className="container">
           <div className="content has-text-centered">
             <p>
-              <strong>Zup</strong> - Copyright © 2017
+              <strong>Zup</strong> - Copyright © 2018
             </p>
           </div>
         </div>

@@ -9,7 +9,7 @@ class Field extends Component {
     }
   }
 
-  component = ({ input }) => {
+  component = ({ input, meta: { touched, error } }) => {
     return (
       <div className="field">
         {this.props.label ? (
@@ -18,6 +18,7 @@ class Field extends Component {
           ""
         )}
         <div className="control">{this.input(input)}</div>
+        <p class="help is-danger">{touched && error}</p>
       </div>
     );
   };
@@ -63,12 +64,17 @@ class Field extends Component {
         input: {
           name: this.props.name,
           value: this.props.value
-        }
+        },
+        meta: {}
       };
       return this.component(field);
     } else {
       return (
-        <ReduxFormField name={this.props.name} component={this.component} />
+        <ReduxFormField
+          name={this.props.name}
+          component={this.component}
+          validate={this.props.validate}
+        />
       );
     }
   }

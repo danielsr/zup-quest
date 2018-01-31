@@ -4,6 +4,7 @@ import { reduxForm } from "redux-form";
 import { connect } from "react-redux";
 import { actions } from "../store/actions";
 import { Modal, Field, Button } from "../components";
+import { required } from "../util/formValid";
 
 class Register extends Component {
   buttons = () => {
@@ -28,9 +29,9 @@ class Register extends Component {
   render() {
     return (
       <Modal title="Cadastro" buttons={this.buttons}>
-        <Field name="name" label="Nome" />
-        <Field name="email" label="E-mail" />
-        <Field name="pwd" label="Senha" type="password" />
+        <Field name="name" label="Nome" validate={[required]} />
+        <Field name="email" label="E-mail" validate={[required]} />
+        <Field name="pwd" label="Senha" type="password" validate={[required]} />
       </Modal>
     );
   }

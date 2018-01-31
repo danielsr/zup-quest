@@ -4,6 +4,7 @@ import { reduxForm } from "redux-form";
 import { connect } from "react-redux";
 import { actions } from "../store/actions";
 import { Modal, Field, Button } from "../components";
+import { required } from "../util/formValid";
 
 class Login extends Component {
   buttons = () => {
@@ -24,8 +25,8 @@ class Login extends Component {
   render() {
     return (
       <Modal title="Fazer Login" buttons={this.buttons}>
-        <Field name="email" label="E-mail" />
-        <Field name="pwd" label="Senha" type="password" />
+        <Field name="email" label="E-mail" validate={[required]} />
+        <Field name="pwd" label="Senha" type="password" validate={[required]} />
       </Modal>
     );
   }
