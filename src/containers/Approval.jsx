@@ -23,7 +23,7 @@ class Approval extends Component {
 
           <td className="has-text-centered">
             <Link to={"/approval/" + refund.id} className="icon">
-              <i class="fa fa-check-square" />
+              <i className="fa fa-check-square" />
             </Link>{" "}
           </td>
         </tr>

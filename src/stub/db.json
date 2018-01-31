@@ -122,11 +122,11 @@
         {
           "desc": "GASOLINA",
           "nf": "123",
-          "value": "100,00"
+          "value": "120,00"
         }
       ],
       "userId": 1,
-      "data": "Wed Jan 31 2018 11:02:45 GMT-0200",
+      "data": "Wed Jan 31 2018 11:26:57 GMT-0200",
       "id": 5,
       "user": {
         "id": 1,
