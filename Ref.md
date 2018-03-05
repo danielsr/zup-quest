@@ -30,4 +30,5 @@
 * [Redux](https://redux.js.org/docs/basics/UsageWithReact.html)
 * [Redux Form](https://redux-form.com/7.2.3/docs/gettingstarted.md/)
 * [Redux Saga](https://redux-saga.js.org/docs/introduction/BeginnerTutorial.html)
+* [Exploring the what and the why of Redux](https://medium.freecodecamp.org/exploring-the-what-and-the-why-of-redux-6faadab4768b)
 * [A Guide For Building A React Redux CRUD App](https://medium.com/@rajaraodv/a-guide-for-building-a-react-redux-crud-app-7fe0b8943d0f)
