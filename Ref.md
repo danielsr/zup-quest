@@ -18,6 +18,7 @@
 
 ## React
 
+* [A Comprehensive Guide to React.js in 2018](https://medium.freecodecamp.org/a-comprehensive-guide-to-react-js-in-2018-ba8bb6975597)
 * [Simple React Development in 2018](https://hackernoon.com/simple-react-development-in-2017-113bd563691f)
 * [Learning React.js is easier than you think](https://edgecoders.com/learning-react-js-is-easier-than-you-think-fbd6dc4d935a)
 * [All the fundamental React.js concepts, jammed into this single Medium article](https://medium.freecodecamp.org/all-the-fundamental-react-js-concepts-jammed-into-this-single-medium-article-c83f9b53eac2)
